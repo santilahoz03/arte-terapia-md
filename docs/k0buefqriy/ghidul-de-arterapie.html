@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ghidul de Arterapie</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FFF8F4;
+  --bg2: #F6ECFF;
+  --a1: #D9C9F7;
+  --a1d: #B89FE0;
+  --a2: #F3B8D2;
+  --title: #4E4036;
+  --body: #6F6258;
+  --lavbox: #e8e6f5;
+  --teal: #5bbcb8;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #e8e8e8; font-family: 'Inter', sans-serif; color: var(--body); }
+
+/* PAGE */
+.page {
+  position: relative;
+  width: 794px;
+  min-height: 1123px;
+  margin: 32px auto;
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  page-break-after: always;
+}
+
+/* TEAL SPLASH top-right */
+.splash {
+  position: absolute;
+  top: 0; right: 0;
+  width: 220px; height: 95px;
+  background: radial-gradient(ellipse 110px 70px at 160px 30px,
+    rgba(70,195,190,0.90) 0%,
+    rgba(100,210,200,0.75) 25%,
+    rgba(130,220,205,0.50) 55%,
+    transparent 80%);
+  pointer-events: none;
+}
+.splash::after {
+  content: '';
+  position: absolute;
+  top: 15px; right: 20px;
+  width: 80px; height: 50px;
+  background: radial-gradient(ellipse at 60% 40%,
+    rgba(60,185,180,0.6) 0%,
+    rgba(90,205,195,0.3) 50%,
+    transparent 80%);
+  transform: rotate(-15deg);
+}
+
+/* COVER PAGE */
+.cover {
+  background: var(--lavbox);
+  min-height: 1123px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 60px 60px;
+  text-align: center;
+}
+.cover .badge {
+  background: #fff;
+  border: 2px solid var(--a1d);
+  border-radius: 50px;
+  padding: 8px 28px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--a1d);
+  text-transform: uppercase;
+  margin-bottom: 36px;
+}
+.cover .cover-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 68px;
+  font-weight: 700;
+  color: var(--title);
+  line-height: 1.1;
+  margin-bottom: 28px;
+}
+.cover .cover-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  color: var(--body);
+  line-height: 1.6;
+  max-width: 540px;
+  margin: 0 auto 48px;
+}
+.cover .cover-deco {
+  width: 90px;
+  height: 4px;
+  background: linear-gradient(to right, var(--a1d), var(--a2));
+  border-radius: 4px;
+  margin: 0 auto 48px;
+}
+.cover .cover-emoji-row {
+  font-size: 22px;
+  color: var(--title);
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+.cover .cover-art {
+  font-size: 90px;
+  margin-bottom: 28px;
+  line-height: 1;
+}
+.cover .cover-splash {
+  position: absolute;
+  top: 0; right: 0;
+  width: 280px; height: 130px;
+  background: radial-gradient(ellipse 150px 90px at 200px 40px,
+    rgba(70,195,190,0.90) 0%,
+    rgba(100,210,200,0.75) 25%,
+    rgba(130,220,205,0.50) 55%,
+    transparent 80%);
+}
+.cover .bottom-stripe {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 110px;
+  background: linear-gradient(to right,
+    #e63946, #f4a261, #e9c46a, #2a9d8f, #457b9d, #6a0572, #c77dff);
+}
+
+/* EXERCISE PAGE */
+.ex-page {
+  min-height: 1123px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.ex-top {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 60px 0;
+  position: relative;
+}
+.ex-num {
+  position: absolute;
+  top: 18px; left: 32px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--a1d);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.ex-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--title);
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.ex-title .emoji {
+  font-size: 36px;
+  font-style: normal;
+}
+.instruction-box {
+  background: var(--lavbox);
+  border-radius: 12px;
+  padding: 16px 28px;
+  font-size: 15px;
+  color: var(--title);
+  line-height: 1.65;
+  text-align: center;
+  width: 100%;
+  max-width: 640px;
+  margin-bottom: 28px;
+}
+.illustration-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 340px;
+}
+.illust-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 340px;
+  height: 340px;
+  border: 2.5px dashed #d4c8f0;
+  border-radius: 20px;
+  background: #fdf9ff;
+  gap: 14px;
+  padding: 20px;
+}
+.illust-placeholder .big-emoji {
+  font-size: 80px;
+  line-height: 1;
+  opacity: 0.6;
+}
+.illust-placeholder .draw-label {
+  font-size: 13px;
+  color: #b8aacf;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* RAINBOW STRIPE */
+.rainbow-stripe {
+  height: 90px;
+  background: linear-gradient(to right,
+    #e63946 0%, #f4a261 16.6%, #e9c46a 33.3%,
+    #2a9d8f 50%, #457b9d 66.6%, #6a0572 83.3%, #c77dff 100%);
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 24px 10px;
+}
+
+/* FOOTER inside rainbow stripe */
+.footer-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+  gap: 2px;
+}
+.footer-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.95);
+  font-family: 'Playfair Display', serif;
+}
+.footer-reflection {
+  font-size: 11px;
+  color: rgba(255,255,255,0.88);
+  font-style: italic;
+  text-align: right;
+  max-width: 500px;
+}
+
+@media print {
+  body { background: white; }
+  .page { margin: 0; box-shadow: none; }
+}
+@media (max-width: 860px) {
+  .page { width: 100%; margin: 0; }
+  .cover .cover-title { font-size: 48px; }
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="page cover">
+  <div class="cover-splash"></div>
+  <div class="badge">Ghid Complet de Arterapie</div>
+  <div class="cover-art">🎨</div>
+  <div class="cover-title">Ghidul de Arterapie</div>
+  <div class="cover-subtitle">100 de exerciții ghidate pentru autocunoaștere, vindecare și creștere interioară</div>
+  <div class="cover-deco"></div>
+  <div class="cover-emoji-row">🎨 Colorează · Descoperă · Crește</div>
+  <div class="bottom-stripe"></div>
+</div>
+
+<!-- EXERCISES -->
+<!-- 1 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 1</div>
+    <h2 class="ex-title"><span class="emoji">🗺️</span> Harta Emoțiilor</h2>
+    <div class="instruction-box">Desenează-ți corpul mare. Colorează zonele diferit după emoție.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🗺️</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🗺️ Harta Emoțiilor</div><div class="footer-reflection">Care zonă colorată te-a surprins cel mai mult și de ce?</div></div></div>
+</div>
+
+<!-- 2 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 2</div>
+    <h2 class="ex-title"><span class="emoji">🌊</span> Furtuna Emoțiilor</h2>
+    <div class="instruction-box">Alege o emoție grea. Deseneaz-o ca natură — mare, furtună, pădure, munte.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🌊</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🌊 Furtuna Emoțiilor</div><div class="footer-reflection">Cum te-ai simți dacă acest fenomen natural s-ar liniști?</div></div></div>
+</div>
+
+<!-- 3 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 3</div>
+    <h2 class="ex-title"><span class="emoji">🎨</span> Culoarea Stării de Spirit</h2>
+    <div class="instruction-box">Închide ochii și simte starea ta. Alege culoarea care o reprezintă. Deseneaz-o.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🎨</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🎨 Culoarea Stării de Spirit</div><div class="footer-reflection">Ce i-ai spune ție când privești desenul terminat?</div></div></div>
+</div>
+
+<!-- 4 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 4</div>
+    <h2 class="ex-title"><span class="emoji">✉️</span> Scrisoare către Emoție</h2>
+    <div class="instruction-box">Alege o emoție pe care vrei să o eliberezi. Deseneaz-o ca obiect.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">✉️</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">✉️ Scrisoare către Emoție</div><div class="footer-reflection">Ce vrei să îi spui acestei emoții acum că o vezi din exterior?</div></div></div>
+</div>
+
+<!-- 5 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 5</div>
+    <h2 class="ex-title"><span class="emoji">🧅</span> Straturile Experienței</h2>
+    <div class="instruction-box">Desenează o ceapă mare. Fiecare strat = ceva: exterior, cum par celorlalți, ce simt, cum mă simt, eul autentic.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🧅</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🧅 Straturile Experienței</div><div class="footer-reflection">Ce simți față de diferența dintre straturile exterioare și interioare?</div></div></div>
+</div>
+
+<!-- 6 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 6</div>
+    <h2 class="ex-title"><span class="emoji">🎭</span> Arta Contrastului</h2>
+    <div class="instruction-box">Împarte foaia în două. Pe o parte: calm/bucurie. Pe cealaltă: tensiune/frică.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🎭</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🎭 Arta Contrastului</div><div class="footer-reflection">Ce leagă cele două laturi ale desenului tău?</div></div></div>
+</div>
+
+<!-- 7 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 7</div>
+    <h2 class="ex-title"><span class="emoji">🌋</span> Vulcanul Interior</h2>
+    <div class="instruction-box">Închide ochii și gândește-te la furie sau tensiune. Desenează vulcanul care o conține.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🌋</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🌋 Vulcanul Interior</div><div class="footer-reflection">Cum te-ai simți după ce vulcanul a erupt?</div></div></div>
+</div>
+
+<!-- 8 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 8</div>
+    <h2 class="ex-title"><span class="emoji">🌲</span> Peisajul Pădurii Sufletești</h2>
+    <div class="instruction-box">Imaginează-ți că sufletul tău este o pădure. Deseneaz-o cum este acum.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🌲</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🌲 Peisajul Pădurii Sufletești</div><div class="footer-reflection">Ce trebuie să aduci în pădure pentru a te simți mai bine acolo?</div></div></div>
+</div>
+
+<!-- 9 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 9</div>
+    <h2 class="ex-title"><span class="emoji">🎭</span> Mască și Față</h2>
+    <div class="instruction-box">Desenează două fețe: una pe care o arăți lumii, una păstrată înăuntru.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🎭</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🎭 Mască și Față</div><div class="footer-reflection">Cum te-ai simți dacă oamenii ar cunoaște fața interioară?</div></div></div>
+</div>
+
+<!-- 10 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 10</div>
+    <h2 class="ex-title"><span class="emoji">📔</span> Jurnalul Culorilor</h2>
+    <div class="instruction-box">În fiecare zi a săptămânii, alege o culoare care se potrivește zilei. Adaugă un cuvânt.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">📔</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">📔 Jurnalul Culorilor</div><div class="footer-reflection">Care zile au primit culori similare și ce înseamnă asta?</div></div></div>
+</div>
+
+<!-- 11 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 11</div>
+    <h2 class="ex-title"><span class="emoji">🧭</span> Peisajul Meu Interior</h2>
+    <div class="instruction-box">Închide ochii câteva minute și imaginează-ți un peisaj ca tine. Deschide și deseneaz-o.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🧭</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🧭 Peisajul Meu Interior</div><div class="footer-reflection">Ce ai nevoie să vizitezi acest peisaj pentru a te simți mai bine?</div></div></div>
+</div>
+
+<!-- 12 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 12</div>
+    <h2 class="ex-title"><span class="emoji">🫧</span> Cine Sunt Eu – 5 Straturi</h2>
+    <div class="instruction-box">Scrie-ți numele în centrul unui cerc. Desenează 5 cercuri concentrice cu caracteristici, roluri și valori.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🫧</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🫧 Cine Sunt Eu – 5 Straturi</div><div class="footer-reflection">Care strat este cel mai aproape de oamenii apropiați ție?</div></div></div>
+</div>
+
+<!-- 13 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 13</div>
+    <h2 class="ex-title"><span class="emoji">🌳</span> Arborele Vieții</h2>
+    <div class="instruction-box">Desenează un copac mare. Rădăcini = origini și familie.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🌳</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🌳 Arborele Vieții</div><div class="footer-reflection">Ce ramură ai vrea să o consolidezi în acest an?</div></div></div>
+</div>
+
+<!-- 14 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 14</div>
+    <h2 class="ex-title"><span class="emoji">💪</span> Superputerile Mele</h2>
+    <div class="instruction-box">Scrie 5 puncte forte. Desenează un simbol pentru fiecare forță.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">💪</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">💪 Superputerile Mele</div><div class="footer-reflection">Ce s-ar întâmpla dacă ai folosi aceste puteri mai mult?</div></div></div>
+</div>
+
+<!-- 15 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 15</div>
+    <h2 class="ex-title"><span class="emoji">🧩</span> Colaj de Valori</h2>
+    <div class="instruction-box">Decupează imagini și cuvinte care reprezintă valori importante pentru tine. Lipeșle pe hârtie.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🧩</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🧩 Colaj de Valori</div><div class="footer-reflection">Ce ți-ar spune colajul despre ce crezi cu adevărat?</div></div></div>
+</div>
+
+<!-- 16 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 16</div>
+    <h2 class="ex-title"><span class="emoji">🔧</span> Linia Timpului Vieții</h2>
+    <div class="instruction-box">Desenează o linie dreaptă — linia timpului vieții tale. Naștere, emoții, evenimente, momente de cotitură.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🔧</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🔧 Linia Timpului Vieții</div><div class="footer-reflection">Ce moment te-a învățat cel mai mult?</div></div></div>
+</div>
+
+<!-- 17 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 17</div>
+    <h2 class="ex-title"><span class="emoji">🪞</span> Oglinda Sinelui</h2>
+    <div class="instruction-box">Desenează o ramă mare de oglindă. Înăuntrul oglinzii: desenează-te cum te vede pe tine însuți.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🪞</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🪞 Oglinda Sinelui</div><div class="footer-reflection">Ce spun cele două imagini din oglindă una alteia?</div></div></div>
+</div>
+
+<!-- 18 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 18</div>
+    <h2 class="ex-title"><span class="emoji">❤️</span> Corpul Meu Vorbește</h2>
+    <div class="instruction-box">Desenează o figură umană. Pune o inimă unde simți că vine căldură, durere, frig.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">❤️</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">❤️ Corpul Meu Vorbește</div><div class="footer-reflection">Dacă zona cea mai dureroasă ar putea vorbi, ce ar spune?</div></div></div>
+</div>
+
+<!-- 19 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 19</div>
+    <h2 class="ex-title"><span class="emoji">🎭</span> Roluri și Măști</h2>
+    <div class="instruction-box">Listează toate rolurile pe care le joci. Desenează o mască pentru fiecare rol.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🎭</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🎭 Roluri și Măști</div><div class="footer-reflection">Ce rol simți că ești cel mai autentic în el?</div></div></div>
+</div>
+
+<!-- 20 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 20</div>
+    <h2 class="ex-title"><span class="emoji">🧭</span> Busola Dorințelor</h2>
+    <div class="instruction-box">Desenează o busolă mare cu 8 direcții. La fiecare direcție scrie ceva ce vrei în viață.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🧭</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🧭 Busola Dorințelor</div><div class="footer-reflection">Ce te împiedică să mergi în direcția care ți-ai dorit?</div></div></div>
+</div>
+
+<!-- 21 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 21</div>
+    <h2 class="ex-title"><span class="emoji">🏡</span> Locul Meu Sigur</h2>
+    <div class="instruction-box">Închide ochii și imaginează-ți un loc unde te simți în siguranță. Deschide ochii și deseneaz-o.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🏡</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🏡 Locul Meu Sigur</div><div class="footer-reflection">Ce detaliu mic face cel mai mult ca acest loc să fie sigur?</div></div></div>
+</div>
+
+<!-- 22 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 22</div>
+    <h2 class="ex-title"><span class="emoji">📦</span> Cutia</h2>
+    <div class="instruction-box">Desenează o cutie puternică cu capac. Înăuntrul ei: scrie sau desenează toate grijile pe care vrei să le pui deoparte.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">📦</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">📦 Cutia</div><div class="footer-reflection">Cum te simți să te gândești la cutia încuiată?</div></div></div>
+</div>
+
+<!-- 23 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 23</div>
+    <h2 class="ex-title"><span class="emoji">🏄</span> Valuri și Țărm</h2>
+    <div class="instruction-box">Desenează o mare cu valuri. Valuri = gânduri și temeri. Țărm = prezența ta.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🏄</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🏄 Valuri și Țărm</div><div class="footer-reflection">Ce te-ar ajuta să stai pe țărm când valurile sunt mari?</div></div></div>
+</div>
+
+<!-- 24 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 24</div>
+    <h2 class="ex-title"><span class="emoji">🫁</span> Respirație în Culoare</h2>
+    <div class="instruction-box">Desenează un cerc mare. Pe măsură ce respiri desenează o cale interioară (spirală).</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🫁</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🫁 Respirație în Culoare</div><div class="footer-reflection">Cum simte corpul tău după 10 respirații?</div></div></div>
+</div>
+
+<!-- 25 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 25</div>
+    <h2 class="ex-title"><span class="emoji">🗺️</span> Harta Temerilor</h2>
+    <div class="instruction-box">Scrie frica ta centrală în centru. În jur: ce face această frică să îți provoace să faci, să eviți sau să acționezi.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🗺️</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🗺️ Harta Temerilor</div><div class="footer-reflection">Ce ai simți când ți-ai fi depășit frica?</div></div></div>
+</div>
+
+<!-- 26 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 26</div>
+    <h2 class="ex-title"><span class="emoji">☁️</span> Norul de Gânduri</h2>
+    <div class="instruction-box">Desenează un cer cu nori. Scrie în fiecare nor un gând deranjant.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">☁️</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">☁️ Norul de Gânduri</div><div class="footer-reflection">Ce a fost cel mai ușor de eliberat și ce a putut fi eliberat?</div></div></div>
+</div>
+
+<!-- 27 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 27</div>
+    <h2 class="ex-title"><span class="emoji">⚓</span> Ancora</h2>
+    <div class="instruction-box">În corpul tău — ce simți că te stabilizează acum? Desenează o ancoră.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">⚓</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">⚓ Ancora</div><div class="footer-reflection">Ce te-a stabilizat cel mai mult când te-ai simțit că te prăbușești?</div></div></div>
+</div>
+
+<!-- 28 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 28</div>
+    <h2 class="ex-title"><span class="emoji">🚦</span> Semaforul Stresului</h2>
+    <div class="instruction-box">Desenează un semafor mare. Roșu = anxietate maximă. Galben = mediu. Verde = calm.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🚦</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🚦 Semaforul Stresului</div><div class="footer-reflection">Ce te-a ajutat să treci la verde ultima oară?</div></div></div>
+</div>
+
+<!-- 29 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 29</div>
+    <h2 class="ex-title"><span class="emoji">🌡️</span> Temperatura Corpului</h2>
+    <div class="instruction-box">Desenează un termometru mare. Marchează temperatura ta emoțională actuală.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🌡️</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🌡️ Temperatura Corpului</div><div class="footer-reflection">Când te-ai simțit ultima oară la temperatura ideală?</div></div></div>
+</div>
+
+<!-- 30 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 30</div>
+    <h2 class="ex-title"><span class="emoji">⏳</span> Puterea Prezentului</h2>
+    <div class="instruction-box">Stai liniștit 2 minute. Privește în jur. Scrie 5 lucruri pe care le vezi, 4 auzi, 3 simți.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">⏳</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">⏳ Puterea Prezentului</div><div class="footer-reflection">Ce te-a adus cel mai repede la prezent?</div></div></div>
+</div>
+
+<!-- 31 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 31</div>
+    <h2 class="ex-title"><span class="emoji">👥</span> Cercul Oamenilor</h2>
+    <div class="instruction-box">Pune un punct în centru — ești tu. Desenează cercuri concentrice cu oamenii din viața ta.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">👥</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">👥 Cercul Oamenilor</div><div class="footer-reflection">Cine ți-ai dori să aduci mai mult în cercul interior?</div></div></div>
+</div>
+
+<!-- 32 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 32</div>
+    <h2 class="ex-title"><span class="emoji">🌉</span> Poduri și Ziduri</h2>
+    <div class="instruction-box">Împarte foaia în două. Pune câte o persoană pe fiecare parte. Între ei: pod sau zid?</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🌉</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🌉 Poduri și Ziduri</div><div class="footer-reflection">Ce pas mic ar putea întări podul?</div></div></div>
+</div>
+
+<!-- 33 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 33</div>
+    <h2 class="ex-title"><span class="emoji">📮</span> Scrisoarea Netrimisă</h2>
+    <div class="instruction-box">Scrie cuiva ceva dificil de spus. Spune totul fără cenzură.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">📮</div><div class="draw-label">Spațiu pentru scris</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">📮 Scrisoarea Netrimisă</div><div class="footer-reflection">Ce ai simțit în corp în timp ce scriai?</div></div></div>
+</div>
+
+<!-- 34 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 34</div>
+    <h2 class="ex-title"><span class="emoji">🖼️</span> Galeria Profesorilor</h2>
+    <div class="instruction-box">Desenează o galerie cu 5 rame. În fiecare ramă: persoana care te-a învățat ceva în viață.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🖼️</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🖼️ Galeria Profesorilor</div><div class="footer-reflection">Care ramă a fost cea mai dificilă de completat și de ce?</div></div></div>
+</div>
+
+<!-- 35 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 35</div>
+    <h2 class="ex-title"><span class="emoji">⚫</span> Umbra Celuilalt</h2>
+    <div class="instruction-box">Gândește-te la o persoană care te deranjează. Desenează umbra sa.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">⚫</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">⚫ Umbra Celuilalt</div><div class="footer-reflection">Ce dezvăluie umbra celuilalt despre tine?</div></div></div>
+</div>
+
+<!-- 36 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 36</div>
+    <h2 class="ex-title"><span class="emoji">💃</span> Dansul Conexiunii</h2>
+    <div class="instruction-box">Alege o conexiune importantă. Desenează-o cu două linii care reprezintă conexiunea.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">💃</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">💃 Dansul Conexiunii</div><div class="footer-reflection">Dacă această conexiune ar fi un dans, care ar fi numele lui?</div></div></div>
+</div>
+
+<!-- 37 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 37</div>
+    <h2 class="ex-title"><span class="emoji">🌸</span> Granițe ca Grădini</h2>
+    <div class="instruction-box">Imaginează-ți granițele tale ca o grădină. Ce fel de gard există? Cu poartă? Deschisă?</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🌸</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🌸 Granițe ca Grădini</div><div class="footer-reflection">Ce ai vrea să schimbi în grădina ta?</div></div></div>
+</div>
+
+<!-- 38 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 38</div>
+    <h2 class="ex-title"><span class="emoji">👶</span> Amintire din Copilărie</h2>
+    <div class="instruction-box">Alege o amintire pozitivă din copilărie. Deseneaz-o cu detalii — loc, oameni, culori.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">👶</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">👶 Amintire din Copilărie</div><div class="footer-reflection">Cum ar putea această amintire să aducă puțin din acel sentiment azi?</div></div></div>
+</div>
+
+<!-- 39 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 39</div>
+    <h2 class="ex-title"><span class="emoji">🌐</span> Spațiu Comun</h2>
+    <div class="instruction-box">Alege o conexiune importantă. Împarte foaia în treimi: 'eu', 'el/ea', 'noi'.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🌐</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🌐 Spațiu Comun</div><div class="footer-reflection">Ce ai fi dorit să adaugi mai mult în spațiul comun?</div></div></div>
+</div>
+
+<!-- 40 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 40</div>
+    <h2 class="ex-title"><span class="emoji">🕊️</span> Iertarea</h2>
+    <div class="instruction-box">Alege pe cineva care te-a rănit. Scrie ce s-a întâmplat, cum te-ai simțit.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🕊️</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🕊️ Iertarea</div><div class="footer-reflection">Ce s-ar întâmpla când ai spune cuvintele 'Iert'?</div></div></div>
+</div>
+
+<!-- 41 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 41</div>
+    <h2 class="ex-title"><span class="emoji">👶</span> Copilul Interior</h2>
+    <div class="instruction-box">Închide ochii și imaginează-te la 7-8 ani. Deschide ochii și desenează acel copil.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">👶</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">👶 Copilul Interior</div><div class="footer-reflection">Ce mai are nevoie să audă copilul tău interior?</div></div></div>
+</div>
+
+<!-- 42 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 42</div>
+    <h2 class="ex-title"><span class="emoji">✏️</span> Răni și Cicatrici</h2>
+    <div class="instruction-box">Desenează un contur de corp. Marchează locurile cu răni fizice sau emoționale.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">✏️</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">✏️ Răni și Cicatrici</div><div class="footer-reflection">Ce cicatrice te-a ajutat să devii mai puternic?</div></div></div>
+</div>
+
+<!-- 43 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 43</div>
+    <h2 class="ex-title"><span class="emoji">🎨</span> Artă Calmantă</h2>
+    <div class="instruction-box">Pur și simplu desenează forme repetitive: valuri, cercuri, flori, mandale. Nu gândi — doar mișcarea mâinii.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🎨</div><div class="draw-label">Spațiu pentru desen liber</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🎨 Artă Calmantă</div><div class="footer-reflection">Ce formă s-a repetat cel mai mult și ce înseamnă asta?</div></div></div>
+</div>
+
+<!-- 44 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 44</div>
+    <h2 class="ex-title"><span class="emoji">🫙</span> Borcanul Resurselor</h2>
+    <div class="instruction-box">Desenează un borcan/vas. Umple-l cu tot ce ai ca resursă: oameni, abilități, amintiri, valori.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🫙</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🫙 Borcanul Resurselor</div><div class="footer-reflection">Ce resursă ai uitat că există pentru tine?</div></div></div>
+</div>
+
+<!-- 45 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 45</div>
+    <h2 class="ex-title"><span class="emoji">💡</span> Lumină în Întuneric</h2>
+    <div class="instruction-box">Pe hârtie neagră desenează o lumină — în perioadele dificile ai găsit lumină. Stele, lumânări, ferestre.</div>
+    <div class="illustration-area"><div class="illust-placeholder" style="background:#1a1a2e; border-color:#4a4a7a;"><div class="big-emoji" style="opacity:0.9;">💡</div><div class="draw-label" style="color:#8888bb;">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">💡 Lumină în Întuneric</div><div class="footer-reflection">Ce luminiță mică este cea mai importantă pentru tine?</div></div></div>
+</div>
+
+<!-- 46 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 46</div>
+    <h2 class="ex-title"><span class="emoji">🎁</span> Darurile Mele</h2>
+    <div class="instruction-box">Desenează 5 cadouri. Fiecare cadou = abilitate, talent sau calitate pe care o ai.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🎁</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🎁 Darurile Mele</div><div class="footer-reflection">Ce cadou îți este cel mai greu să îți oferi ție însuți?</div></div></div>
+</div>
+
+<!-- 47 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 47</div>
+    <h2 class="ex-title"><span class="emoji">💗</span> Corpul ca Aliat</h2>
+    <div class="instruction-box">Stai liniștit. Scanează corpul. Ce simte bine acum? Ce caută atenție?</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">💗</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">💗 Corpul ca Aliat</div><div class="footer-reflection">Ce a făcut corpul azi fără să fie auzit?</div></div></div>
+</div>
+
+<!-- 48 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 48</div>
+    <h2 class="ex-title"><span class="emoji">🕊️</span> Eliberare</h2>
+    <div class="instruction-box">Scrie tot ce vrei să eliberezi — credințe, dureri, tipare. Citește lista cu voce tare.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🕊️</div><div class="draw-label">Spațiu pentru scris</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🕊️ Eliberare</div><div class="footer-reflection">Ce este încă greu de eliberat și de ce?</div></div></div>
+</div>
+
+<!-- 49 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 49</div>
+    <h2 class="ex-title"><span class="emoji">✨</span> Mantră în Forme</h2>
+    <div class="instruction-box">Alege o mantră de întărire (de exemplu: 'Pot face față', 'Merit să fiu iubit'). Scrie-o în centru mare.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">✨</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">✨ Mantră în Forme</div><div class="footer-reflection">De câte ori pe zi ai nevoie să auzi această mantră?</div></div></div>
+</div>
+
+<!-- 50 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 50</div>
+    <h2 class="ex-title"><span class="emoji">🌈</span> Eu peste un An</h2>
+    <div class="instruction-box">Închide ochii și imaginează-te peste un an — mai relaxat și mai vindecat. Deschide ochii și deseneaz-o.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🌈</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🌈 Eu peste un An</div><div class="footer-reflection">Care similitudine ai dori să mai fie acolo peste un an?</div></div></div>
+</div>
+
+<!-- 51 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 51</div>
+    <h2 class="ex-title"><span class="emoji">🌈</span> Grădina Copilăriei</h2>
+    <div class="instruction-box">Închide ochii și gândește-te: ce îți aducea bucurie pură ca copil? Deschide ochii și deseneaz-o.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🌈</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🌈 Grădina Copilăriei</div><div class="footer-reflection">Ce ar ajuta să faci mai mult din ce îți aducea bucurie în copilărie?</div></div></div>
+</div>
+
+<!-- 52 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 52</div>
+    <h2 class="ex-title"><span class="emoji">💥</span> Explozie de Culori</h2>
+    <div class="instruction-box">Fără planificare — desenează puncte dense cu markere mari. Plin, viu, vesel, energetic.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">💥</div><div class="draw-label">Spațiu pentru desen liber</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">💥 Explozie de Culori</div><div class="footer-reflection">Cum simte corpul tău în timp de desen liber?</div></div></div>
+</div>
+
+<!-- 53 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 53</div>
+    <h2 class="ex-title"><span class="emoji">🎵</span> Desen Muzical</h2>
+    <div class="instruction-box">Pune muzica pe care o iubești. Desenează în timp ce asculți — doar mișcarea mâinii cu muzica.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🎵</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🎵 Desen Muzical</div><div class="footer-reflection">Care este sentimentul pe care muzica l-a trezit cel mai puternic în desen?</div></div></div>
+</div>
+
+<!-- 54 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 54</div>
+    <h2 class="ex-title"><span class="emoji">☀️</span> Ziua Perfectă</h2>
+    <div class="instruction-box">Desenează ziua ta perfectă: unde ai fi, cu cine, ce ai face: adaugă sunete, culori, mirosuri.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">☀️</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">☀️ Ziua Perfectă</div><div class="footer-reflection">Care este cel mai mic lucru care ar aduce ziua perfectă mai aproape de săptămâna viitoare?</div></div></div>
+</div>
+
+<!-- 55 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 55</div>
+    <h2 class="ex-title"><span class="emoji">🦋</span> Transformarea</h2>
+    <div class="instruction-box">Desenează o omidă din partea stângă. Desenează un fluture ieșind din partea dreaptă.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🦋</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🦋 Transformarea</div><div class="footer-reflection">De ce are nevoie gogoașa cel mai mult pentru ca fluturele să iasă?</div></div></div>
+</div>
+
+<!-- 56 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 56</div>
+    <h2 class="ex-title"><span class="emoji">😂</span> Râs și Ușurință</h2>
+    <div class="instruction-box">Desenează ceva amuzant — arta nu trebuie să fie serioasă. Oameni care râd, fețe, situații absurde.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">😂</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">😂 Râs și Ușurință</div><div class="footer-reflection">Când ai râs ultima oară până ai plâns?</div></div></div>
+</div>
+
+<!-- 57 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 57</div>
+    <h2 class="ex-title"><span class="emoji">〰️</span> Linia Dansului</h2>
+    <div class="instruction-box">Stai față de o hârtie mare lipită pe perete. Numai mâna pe hârtie — desenează cum simți acum.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">〰️</div><div class="draw-label">Spațiu pentru desen liber</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">〰️ Linia Dansului</div><div class="footer-reflection">Care este mișcarea pe care ai vrea să o desenezi mai mult?</div></div></div>
+</div>
+
+<!-- 58 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 58</div>
+    <h2 class="ex-title"><span class="emoji">🎲</span> Jocul Meu</h2>
+    <div class="instruction-box">Creează un joc de masă scurt (5-7 căsuțe). În fiecare căsuță: o provocare, o întrebare sau o acțiune.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🎲</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🎲 Jocul Meu</div><div class="footer-reflection">Ce îți spune jocul vieții tale despre ce vrei să schimbi?</div></div></div>
+</div>
+
+<!-- 59 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 59</div>
+    <h2 class="ex-title"><span class="emoji">🌀</span> Desen fără Scop</h2>
+    <div class="instruction-box">Timp măsurat (5 minute) desenează totul fără scop. Cercuri, curbe, linii, puncte, mâzgăleli.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🌀</div><div class="draw-label">Spațiu pentru desen liber</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🌀 Desen fără Scop</div><div class="footer-reflection">La ce formă te-ai întors fără să recunoști?</div></div></div>
+</div>
+
+<!-- 60 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 60</div>
+    <h2 class="ex-title"><span class="emoji">🎼</span> Partitura Bucuriei</h2>
+    <div class="instruction-box">Desenează 5 rânduri ca o partitură muzicală. Pe fiecare rând: un tip de bucurie (simplă, profundă, liniștită, revărsată, împărțită).</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🎼</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🎼 Partitura Bucuriei</div><div class="footer-reflection">Ce tip de bucurie apare cel mai rar acum?</div></div></div>
+</div>
+
+<!-- 61 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 61</div>
+    <h2 class="ex-title"><span class="emoji">📌</span> Tabla Visurilor</h2>
+    <div class="instruction-box">Decupează imagini și simboluri ale visurilor și obiectivelor tale. Lipeșle pe hârtie: familie, corp, carieră, spirit, relaxare.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">📌</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">📌 Tabla Visurilor</div><div class="footer-reflection">Ce din tabla visurilor îți cere cel mai mult să acționezi?</div></div></div>
+</div>
+
+<!-- 62 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 62</div>
+    <h2 class="ex-title"><span class="emoji">🪜</span> Treptele Obiectivului</h2>
+    <div class="instruction-box">Alege un obiectiv important. Desenează o scară cu 7 trepte.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🪜</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🪜 Treptele Obiectivului</div><div class="footer-reflection">Ce te împiedică să urci la treapta următoare?</div></div></div>
+</div>
+
+<!-- 63 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 63</div>
+    <h2 class="ex-title"><span class="emoji">📖</span> Visul ca Poveste</h2>
+    <div class="instruction-box">Scrie povestea visului tău recurent. Scrie: 'în 2027 când am reușit...'</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">📖</div><div class="draw-label">Spațiu pentru scris</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">📖 Visul ca Poveste</div><div class="footer-reflection">Ce dificultate din poveste a fost cel mai greu de depășit?</div></div></div>
+</div>
+
+<!-- 64 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 64</div>
+    <h2 class="ex-title"><span class="emoji">🐉</span> Obstacolele ca Dragoni</h2>
+    <div class="instruction-box">Desenează un dragon pentru fiecare obstacol care stă între tine și visul tău. Dă fiecărui dragon un nume.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🐉</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🐉 Obstacolele ca Dragoni</div><div class="footer-reflection">Ce dragon ai înfrânt deja și ce te-a ajutat?</div></div></div>
+</div>
+
+<!-- 65 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 65</div>
+    <h2 class="ex-title"><span class="emoji">🧭</span> Busola Deciziei</h2>
+    <div class="instruction-box">Stai față în față cu o decizie dificilă. Desenează o busolă cu 4 direcții.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🧭</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🧭 Busola Deciziei</div><div class="footer-reflection">Ce teamă te-a împiedicat să alegi direcția care ți-ai dorit ultima oară?</div></div></div>
+</div>
+
+<!-- 66 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 66</div>
+    <h2 class="ex-title"><span class="emoji">💌</span> Scrisoare din Viitor</h2>
+    <div class="instruction-box">Scrie o scrisoare către sinele tău actual din versiunea ta de peste 10 ani. Ce au realizat? Ce le-a lipsit? Ce au învățat?</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">💌</div><div class="draw-label">Spațiu pentru scris</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">💌 Scrisoare din Viitor</div><div class="footer-reflection">Care este mesajul din viitor pe care vrei să nu mai repeți?</div></div></div>
+</div>
+
+<!-- 67 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 67</div>
+    <h2 class="ex-title"><span class="emoji">🔭</span> Viziune 5 Ani</h2>
+    <div class="instruction-box">În jumătatea dreaptă: tu acum. În jumătatea stângă: tu în 5 ani.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🔭</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🔭 Viziune 5 Ani</div><div class="footer-reflection">Care este cea mai mare diferență dintre cele două versiuni?</div></div></div>
+</div>
+
+<!-- 68 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 68</div>
+    <h2 class="ex-title"><span class="emoji">🎁</span> Cadou pentru Mine</h2>
+    <div class="instruction-box">Desenează un cadou pe care ți-ai dori să ți-l oferi (nu un obiect – o experiență, timp, odihnă). Înfășoar-o în desen.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🎁</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🎁 Cadou pentru Mine</div><div class="footer-reflection">De ce îți este greu să îți oferi cadouri?</div></div></div>
+</div>
+
+<!-- 69 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 69</div>
+    <h2 class="ex-title"><span class="emoji">✏️</span> Capitolul Următor</h2>
+    <div class="instruction-box">Imaginează-ți că ești o carte. Cum se va numi? Ce a fost scris în ultimul capitol?</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">✏️</div><div class="draw-label">Spațiu pentru scris</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">✏️ Capitolul Următor</div><div class="footer-reflection">De ce ai nevoie pentru ca capitolul următor să reușească?</div></div></div>
+</div>
+
+<!-- 70 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 70</div>
+    <h2 class="ex-title"><span class="emoji">📜</span> Manifestul Visului</h2>
+    <div class="instruction-box">Scrie declarația: 'Mă angajez să...' Adaugă: 'Vreau pentru că...' și 'Pot pentru că...'</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">📜</div><div class="draw-label">Spațiu pentru scris</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">📜 Manifestul Visului</div><div class="footer-reflection">Ce trebuie să fie acolo pentru ca angajamentul să înceapă?</div></div></div>
+</div>
+
+<!-- 71 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 71</div>
+    <h2 class="ex-title"><span class="emoji">💎</span> Frumusețea Imperfecțiunii</h2>
+    <div class="instruction-box">Desenează ceva care s-a spart și apoi repară-l — pliere, ruptură. Adaugă puncte. Consideră: există frumusețe în bucăți?</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">💎</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">💎 Frumusețea Imperfecțiunii</div><div class="footer-reflection">Ce defect îți este greu să îl iubești?</div></div></div>
+</div>
+
+<!-- 72 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 72</div>
+    <h2 class="ex-title"><span class="emoji">❤️</span> Povestea Corpului</h2>
+    <div class="instruction-box">Întinde-te pe o hârtie mare și cere cuiva să îți traseze conturul corpului (sau schițează un corp). Colorează zonele care spun o poveste.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">❤️</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">❤️ Povestea Corpului</div><div class="footer-reflection">Ce a făcut corpul tău fără să se oprească, chiar și în timpurile grele?</div></div></div>
+</div>
+
+<!-- 73 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 73</div>
+    <h2 class="ex-title"><span class="emoji">🕊️</span> Iertare fără Uitare</h2>
+    <div class="instruction-box">Scrie numele persoanei care te-a rănit. Scrie: ce s-a întâmplat, cum te-a influențat.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🕊️</div><div class="draw-label">Spațiu pentru scris</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🕊️ Iertare fără Uitare</div><div class="footer-reflection">Ce s-ar schimba pentru tine după iertare — chiar dacă nu uiți?</div></div></div>
+</div>
+
+<!-- 74 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 74</div>
+    <h2 class="ex-title"><span class="emoji">🎓</span> Greșeli ca Profesori</h2>
+    <div class="instruction-box">Listează 3 greșeli mari pe care le-ai făcut. Desenează lângă fiecare greșeală: ce ai învățat din ea?</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🎓</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🎓 Greșeli ca Profesori</div><div class="footer-reflection">Care greșeală îți este încă greu să îi pui cuvântul 'mulțumesc'?</div></div></div>
+</div>
+
+<!-- 75 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 75</div>
+    <h2 class="ex-title"><span class="emoji">📚</span> Povestea Veche</h2>
+    <div class="instruction-box">Scrie narațiunea pe care ți-ai spus-o despre tine însuți. Închide ochii și întreabă-te: când a început această poveste?</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">📚</div><div class="draw-label">Spațiu pentru scris</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">📚 Povestea Veche</div><div class="footer-reflection">Ce îți dă povestea veche care face greu să o dai drumul?</div></div></div>
+</div>
+
+<!-- 76 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 76</div>
+    <h2 class="ex-title"><span class="emoji">🙏</span> Colaj de Recunoștință</h2>
+    <div class="instruction-box">Decupează imagini și cuvinte ale lucrurilor pentru care ești recunoscător. Lipeșle pe hârtie A3.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🙏</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🙏 Colaj de Recunoștință</div><div class="footer-reflection">Care este cel mai mic lucru pentru care ești recunoscător și pe care nu l-ai observat până azi?</div></div></div>
+</div>
+
+<!-- 77 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 77</div>
+    <h2 class="ex-title"><span class="emoji">☮️</span> Pace cu Trecutul</h2>
+    <div class="instruction-box">Scrie: 'Cel mai greu lucru din trecut de eliberat este...' Deseneaz-o.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">☮️</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">☮️ Pace cu Trecutul</div><div class="footer-reflection">Care este cel mai mic pas spre pace cu acesta?</div></div></div>
+</div>
+
+<!-- 78 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 78</div>
+    <h2 class="ex-title"><span class="emoji">💗</span> Acceptare de Sine</h2>
+    <div class="instruction-box">Scrie 5 lucruri care îți sunt greu să le iubești la tine. Lângă fiecare scrie: 'și aleg să mă iubesc și cu asta'.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">💗</div><div class="draw-label">Spațiu pentru scris</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">💗 Acceptare de Sine</div><div class="footer-reflection">Ce este cel mai greu de pe listă să spui 'și eu iubesc'?</div></div></div>
+</div>
+
+<!-- 79 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 79</div>
+    <h2 class="ex-title"><span class="emoji">🌱</span> Semințele Iertării</h2>
+    <div class="instruction-box">Desenează pământ și semințe. Fiecare sămânță = o iertare pe care o plantezi.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🌱</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🌱 Semințele Iertării</div><div class="footer-reflection">De ce are nevoie sămânța pentru a încolți?</div></div></div>
+</div>
+
+<!-- 80 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 80</div>
+    <h2 class="ex-title"><span class="emoji">🪬</span> Oglinda Iubirii</h2>
+    <div class="instruction-box">Stai față în față cu oglinda (sau imaginează-ți una). Care este primul glas critic care vorbește?</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🪬</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🪬 Oglinda Iubirii</div><div class="footer-reflection">De câte ori pe zi glasul iubitor vorbește față de glasul critic?</div></div></div>
+</div>
+
+<!-- 81 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 81</div>
+    <h2 class="ex-title"><span class="emoji">⚔️</span> Luptătorul Interior</h2>
+    <div class="instruction-box">Desenează o figură de luptător care îți reprezintă puterea interioară. Ce armă are? Ce apărare?</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">⚔️</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">⚔️ Luptătorul Interior</div><div class="footer-reflection">Când a fost luptătorul tău interior cel mai puternic?</div></div></div>
+</div>
+
+<!-- 82 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 82</div>
+    <h2 class="ex-title"><span class="emoji">🌳</span> Rădăcinile Rezilienței</h2>
+    <div class="instruction-box">Desenează un copac puternic cu rădăcini adânci. Rădăcini = ce îți oferă stabilitate (valori, oameni, credințe).</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🌳</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🌳 Rădăcinile Rezilienței</div><div class="footer-reflection">Din ce rădăcină îți tragi puterea cel mai mult în perioadele dificile?</div></div></div>
+</div>
+
+<!-- 83 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 83</div>
+    <h2 class="ex-title"><span class="emoji">🏆</span> Peretele Victoriilor</h2>
+    <div class="instruction-box">Desenează un perete cu rame: fiecare realizare – mare sau mică – de care ești mândru. Sărbătorește-o.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🏆</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🏆 Peretele Victoriilor</div><div class="footer-reflection">Ce realizare îți este cel mai greu să îi dai valoare?</div></div></div>
+</div>
+
+<!-- 84 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 84</div>
+    <h2 class="ex-title"><span class="emoji">🔥</span> Fenixul din Cenușă</h2>
+    <div class="instruction-box">Pe hârtie neagră desenează o pasăre fenix care se înalță. Ce este cenușa din care a ieșit (greutăți, eșecuri)?</div>
+    <div class="illustration-area"><div class="illust-placeholder" style="background:#1a1a2e; border-color:#4a4a7a;"><div class="big-emoji" style="opacity:0.95;">🔥</div><div class="draw-label" style="color:#8888bb;">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🔥 Fenixul din Cenușă</div><div class="footer-reflection">Ce este încă în procesul de ardere și cum îl ajuți să se înalțe?</div></div></div>
+</div>
+
+<!-- 85 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 85</div>
+    <h2 class="ex-title"><span class="emoji">🌦️</span> Furtuna și Adăpostul</h2>
+    <div class="instruction-box">Desenează o furtună puternică. În interiorul furtunii: ce greutăți treci.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🌦️</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🌦️ Furtuna și Adăpostul</div><div class="footer-reflection">Când ai descoperit că ai un adăpost pe care nu știai că există?</div></div></div>
+</div>
+
+<!-- 86 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 86</div>
+    <h2 class="ex-title"><span class="emoji">💪</span> Limita Puterii</h2>
+    <div class="instruction-box">Scrie: 'Până aici pot. Ce este dincolo de această limită...' Desenează limita – ca spațiu fizic.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">💪</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">💪 Limita Puterii</div><div class="footer-reflection">Ce te-a ajutat să descoperi că o limită pe care credeai că există – nu există?</div></div></div>
+</div>
+
+<!-- 87 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 87</div>
+    <h2 class="ex-title"><span class="emoji">🌊</span> Transformarea Durerii</h2>
+    <div class="instruction-box">Alege o durere specifică pe care o porți. Pe stânga: desenează durerea așa cum este.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🌊</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🌊 Transformarea Durerii</div><div class="footer-reflection">Ce a transformat durerea în tine ca forță?</div></div></div>
+</div>
+
+<!-- 88 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 88</div>
+    <h2 class="ex-title"><span class="emoji">✨</span> Credința în Mine</h2>
+    <div class="instruction-box">Scrie 10 fapte adevărate și demonstrate care arată că ești capabil. Nu 'cred', doar fapte: 'Am făcut X', 'Am realizat Y'.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">✨</div><div class="draw-label">Spațiu pentru scris</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">✨ Credința în Mine</div><div class="footer-reflection">Ce credință îți este cel mai greu să o crezi, chiar și cu dovezile?</div></div></div>
+</div>
+
+<!-- 89 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 89</div>
+    <h2 class="ex-title"><span class="emoji">🎋</span> Flexibilitatea Bambusei</h2>
+    <div class="instruction-box">Desenează o tulpină de bambus puternică și vânt puternic. Bambusul se îndoaie, dar nu se rupe.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🎋</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🎋 Flexibilitatea Bambusei</div><div class="footer-reflection">Care a fost momentul în care credeai că te vei rupe și până la urmă nu te-ai rupt?</div></div></div>
+</div>
+
+<!-- 90 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 90</div>
+    <h2 class="ex-title"><span class="emoji">🥇</span> Medalia Experienței</h2>
+    <div class="instruction-box">Proiectează o medalie. Scrie pe ea: 'Medalie pentru...' – pentru ceva care a fost extrem de dificil.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🥇</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🥇 Medalia Experienței</div><div class="footer-reflection">Dacă ar trebui să dai o medalie altei persoane pentru reziliența ei, cui i-ai da?</div></div></div>
+</div>
+
+<!-- 91 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 91</div>
+    <h2 class="ex-title"><span class="emoji">🌱</span> Câmpul Schimbării</h2>
+    <div class="instruction-box">Desenează un câmp cu muguri timpurii. Fiecare mugur = o schimbare pe care începi să o simți.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🌱</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🌱 Câmpul Schimbării</div><div class="footer-reflection">Ce ai amânat să plantezi de mult timp?</div></div></div>
+</div>
+
+<!-- 92 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 92</div>
+    <h2 class="ex-title"><span class="emoji">🚪</span> Ușa Schimbării</h2>
+    <div class="instruction-box">Desenează o ușă mare. În spatele ușii: ce lași în urmă.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🚪</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🚪 Ușa Schimbării</div><div class="footer-reflection">Ce te oprește să deschizi ușa?</div></div></div>
+</div>
+
+<!-- 93 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 93</div>
+    <h2 class="ex-title"><span class="emoji">📄</span> Pagina Albă</h2>
+    <div class="instruction-box">Stai față în față cu o pagină complet goală. Numai când ești gata: scrie ce vrei să scrii pe ea.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">📄</div><div class="draw-label">Spațiu pentru scris</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">📄 Pagina Albă</div><div class="footer-reflection">Care este primul lucru care îți vine când privești o pagină albă goală?</div></div></div>
+</div>
+
+<!-- 94 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 94</div>
+    <h2 class="ex-title"><span class="emoji">🌸</span> Primăvara Sufletului</h2>
+    <div class="instruction-box">Desenează un peisaj de primăvară – flori, culori, picături. Marchează: ce înflorește deja în viața ta?</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🌸</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🌸 Primăvara Sufletului</div><div class="footer-reflection">Care este lucrul pe care îl aștepți să înflorească?</div></div></div>
+</div>
+
+<!-- 95 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 95</div>
+    <h2 class="ex-title"><span class="emoji">🆕</span> Noul Eu</h2>
+    <div class="instruction-box">Desenează două versiuni ale tale: cea veche și cea nouă. Ce este diferit între ele?</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🆕</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🆕 Noul Eu</div><div class="footer-reflection">Ce va învăța Eul vechi de la cel nou?</div></div></div>
+</div>
+
+<!-- 96 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 96</div>
+    <h2 class="ex-title"><span class="emoji">⚡</span> Reîncărcare</h2>
+    <div class="instruction-box">Desenează o baterie. La ce procent ești acum?</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">⚡</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">⚡ Reîncărcare</div><div class="footer-reflection">Care este cea mai mică acțiune care te reîncarcă?</div></div></div>
+</div>
+
+<!-- 97 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 97</div>
+    <h2 class="ex-title"><span class="emoji">🗺️</span> Drumul Înainte</h2>
+    <div class="instruction-box">Desenează o hartă a drumului înainte. Include: destinații, obstacole, locuri de odihnă, întâlniri cu oameni.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🗺️</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🗺️ Drumul Înainte</div><div class="footer-reflection">Care este stația de drum la care aștepți cel mai mult?</div></div></div>
+</div>
+
+<!-- 98 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 98</div>
+    <h2 class="ex-title"><span class="emoji">🎁</span> Darul a Ceea Ce Urmează</h2>
+    <div class="instruction-box">Desenează o cutie cadou. În interior: ce aduci pentru anul următor din tine însuți.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🎁</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🎁 Darul a Ceea Ce Urmează</div><div class="footer-reflection">Ce este cel mai ușor de lăsat și ce este cel mai greu?</div></div></div>
+</div>
+
+<!-- 99 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 99</div>
+    <h2 class="ex-title"><span class="emoji">🌈</span> Speranța</h2>
+    <div class="instruction-box">Închide ochii și imaginează-ți: dacă tot ceea ce sper se va împlini – cum va arăta viața mea? Deschide ochii și desenează.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🌈</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🌈 Speranța</div><div class="footer-reflection">Care este lucrul pe care crezi că se va împlini?</div></div></div>
+</div>
+
+<!-- 100 -->
+<div class="page ex-page">
+  <div class="splash"></div>
+  <div class="ex-top">
+    <div class="ex-num">Exercițiul 100</div>
+    <h2 class="ex-title"><span class="emoji">🙏</span> Desenul Recunoștinței</h2>
+    <div class="instruction-box">Stai cu tine însuți un moment liniștit. Desenează tot ce ești recunoscător pentru – oameni, momente, experiențe, lecții.</div>
+    <div class="illustration-area"><div class="illust-placeholder"><div class="big-emoji">🙏</div><div class="draw-label">Spațiu pentru desen</div></div></div>
+  </div>
+  <div class="rainbow-stripe"><div class="footer-bar"><div class="footer-title">🙏 Desenul Recunoștinței</div><div class="footer-reflection">Care sunt cele trei lucruri pentru care ești recunoscător și cărora nu le-ai acordat atenție până acum?</div></div></div>
+</div>
+
+</body>
+</html>
